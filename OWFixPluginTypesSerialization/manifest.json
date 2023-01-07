@@ -1,6 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/ow-mods/owml/master/schemas/manifest_schema.json",
   "filename": "OWFixPluginTypesSerialization.dll",
+  "patcher": "Patcher.exe",
   "author": "JohnCorby",
   "name": "OWFixPluginTypesSerialization",
   "uniqueName": "JohnCorby.OWFixPluginTypesSerialization",
