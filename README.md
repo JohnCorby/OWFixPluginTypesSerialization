@@ -1,3 +1,3 @@
 # OWFixPluginTypesSerialization
 
-A port of https://github.com/xiaoxiao921/FixPluginTypesSerialization that works for Outer Wilds
+A port of https://github.com/xiaoxiao921/FixPluginTypesSerialization for Outer Wilds
