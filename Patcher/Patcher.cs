@@ -11,7 +11,7 @@ public static class Patcher
 		var basePath = args.Length > 0 ? args[0] : ".";
 		var gamePath = AppDomain.CurrentDomain.BaseDirectory;
 		var managedPath = Path.Combine(gamePath, GetDataPath(gamePath), "Managed");
-		
+
 		File.Delete(Path.Combine(managedPath, "MonoMod.Utils.dll"));
 
 		CopyGameFiles(gamePath, Path.Combine(basePath, "ToCopy"));
