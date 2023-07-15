@@ -10,6 +10,6 @@
   "dependencies": [],
   "warning": {
     "title": "OWFixPluginTypesSerialization - PLEASE READ",
-    "body": "Check the README for steps to disable/uninstall OWFixPluginTypesSerialization. Also check the README if you have linux."
+    "body": "Check the README for steps to disable/uninstall OWFixPluginTypesSerialization. Also check the README if you have Linux."
   }
 }
