@@ -5,11 +5,7 @@
   "author": "JohnCorby",
   "name": "OWFixPluginTypesSerialization",
   "uniqueName": "JohnCorby.OWFixPluginTypesSerialization",
-  "version": "1.0.2",
-  "owmlVersion": "2.9.0",
-  "dependencies": [],
-  "warning": {
-    "title": "OWFixPluginTypesSerialization - PLEASE READ",
-    "body": "Check the README for steps to disable/uninstall OWFixPluginTypesSerialization. Also check the README if you have Linux."
-  }
+  "version": "1.0.3",
+  "owmlVersion": "2.9.3",
+  "dependencies": []
 }
