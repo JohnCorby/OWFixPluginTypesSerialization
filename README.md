@@ -10,4 +10,8 @@ This mod does nothing to the game. Instead, it patches the native UnityPlayer.dl
 
 Add this launch option lol
 
+```
+WINEDLLOVERRIDES="winhttp=n,b" %command%
+```
+
 ![image](https://github.com/JohnCorby/OWFixPluginTypesSerialization/assets/26337121/55f1ce55-0ac4-4074-9210-9aa7e3988a1e)
