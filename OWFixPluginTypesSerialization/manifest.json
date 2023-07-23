@@ -5,7 +5,7 @@
   "author": "JohnCorby",
   "name": "OWFixPluginTypesSerialization",
   "uniqueName": "JohnCorby.OWFixPluginTypesSerialization",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "owmlVersion": "2.9.3",
   "dependencies": []
 }
