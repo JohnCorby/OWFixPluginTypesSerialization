@@ -1,5 +1,0 @@
-﻿<Project>
-  <PropertyGroup>
-    <OutputPath>$(AppData)\OuterWildsModManager\OWML\Mods\JohnCorby.OWFixPluginTypesSerialization</OutputPath>
-  </PropertyGroup>
-</Project>

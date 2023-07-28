@@ -27,4 +27,7 @@
   <ItemGroup>
     <Content Include="OWFixPluginTypesSerialization.csproj.user" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Patcher/Patcher.csproj" /> 
+  </ItemGroup>
 </Project>
