@@ -28,6 +28,6 @@
     <Content Include="OWFixPluginTypesSerialization.csproj.user" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../Patcher/Patcher.csproj" /> 
+    <ProjectReference Include="../OWFixPluginTypesSerializationPatcher/OWFixPluginTypesSerializationPatcher.csproj" /> 
   </ItemGroup>
 </Project>

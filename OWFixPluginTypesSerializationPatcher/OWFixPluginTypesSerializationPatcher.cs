@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 
-namespace Patcher;
+namespace OWFixPluginTypesSerializationPatcher;
 
-public static class Patcher
+public static class OWFixPluginTypesSerializationPatcher
 {
 	//Called by OWML
 	public static void Main(string[] args)
