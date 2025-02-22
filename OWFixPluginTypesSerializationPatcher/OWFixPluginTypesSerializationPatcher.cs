@@ -3,6 +3,7 @@ using System.IO;
 
 namespace OWFixPluginTypesSerializationPatcher;
 
+// copied from nomai vr patcher
 public static class OWFixPluginTypesSerializationPatcher
 {
 	//Called by OWML
