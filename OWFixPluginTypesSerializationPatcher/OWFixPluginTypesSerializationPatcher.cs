@@ -1,11 +1,34 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
 
 namespace OWFixPluginTypesSerializationPatcher;
 
-// copied from nomai vr patcher
+// based on nomaivr and qsb patcher
 public static class OWFixPluginTypesSerializationPatcher
 {
+	// https://github.com/ow-mods/owml/blob/master/src/OWML.Common/OwmlConfig.cs
+	private class OwmlConfig
+	{
+		[JsonProperty("owmlPath")]
+		public string OWMLPath { get; set; }
+	}
+
+	// https://github.com/ow-mods/owml/blob/master/src/OWML.Common/ModManifest.cs
+	private class ModManifest
+	{
+		[JsonProperty("dependencies")]
+		public string[] Dependencies { get; private set; } = { };
+	}
+
+	// https://github.com/ow-mods/owml/blob/master/src/OWML.ModHelper/ModConfig.cs
+	private class ModConfig
+	{
+		[JsonProperty("enabled")]
+		public bool Enabled { get; set; } = true;
+	}
+
+
 	//Called by OWML
 	public static void Main(string[] args)
 	{
@@ -13,15 +36,25 @@ public static class OWFixPluginTypesSerializationPatcher
 		var gamePath = AppDomain.CurrentDomain.BaseDirectory;
 		var managedPath = Path.Combine(gamePath, GetDataPath(gamePath), "Managed");
 
-		// TODO: delete all the existing bep stuff just in case user still has old version
+		// delete all the existing bep stuff just in case user still has old version
+		Directory.Delete(Path.Combine(gamePath, "BepInEx"), true);
+		File.Delete(Path.Combine(gamePath, "doorstop_config.ini"));
+		File.Delete(Path.Combine(gamePath, "winhttp.dll"));
+		Console.WriteLine("deleted all bep stuff in game path");
 
 		// have to delete this owml dll so as to not conflict with a bepinex one of the same name
 		File.Delete(Path.Combine(managedPath, "MonoMod.Utils.dll"));
+		Console.WriteLine("deleted monomod");
 
 		// copy over the right bep stuff to the game folder
-		CopyGameFiles(gamePath, Path.Combine(basePath, "ToCopy"));
+		File.Copy(Path.Combine(basePath, "BepFiles", "doorstop_config.ini"), Path.Combine(gamePath, "doorstop_config.ini"), true);
+		Console.WriteLine("copied doorstop config");
 
-		// TODO: edit the config to point to the right file in our mod folder
+		// edit the config to point to the right file in our mod folder
+		var text = File.ReadAllText(Path.Combine(gamePath, "doorstop_config.ini"));
+		text = text.Replace("%BepFilesPath%", Path.Combine(basePath, "BepFiles"));
+		File.WriteAllText(Path.Combine(gamePath, "doorstop_config.ini"), text);
+		Console.WriteLine("update config path");
 	}
 
 	private static string GetExecutableName(string gamePath)
@@ -48,37 +81,5 @@ public static class OWFixPluginTypesSerializationPatcher
 	private static string GetDataPath(string gamePath)
 	{
 		return Path.Combine(gamePath, $"{GetDataDirectoryName()}");
-	}
-
-	private static void CopyGameFiles(string gamePath, string filesPath)
-	{
-		// Get the subdirectories for the specified directory.
-		var dir = new DirectoryInfo(filesPath);
-
-		if (!dir.Exists)
-		{
-			throw new DirectoryNotFoundException(
-				"Source directory does not exist or could not be found: "
-				+ filesPath);
-		}
-
-		var dirs = dir.GetDirectories();
-
-		// If the destination directory doesn't exist, create it.
-		Directory.CreateDirectory(gamePath);
-
-		// Get the files in the directory and copy them to the new location.
-		var files = dir.GetFiles();
-		foreach (var file in files)
-		{
-			var tempPath = Path.Combine(gamePath, file.Name);
-			file.CopyTo(tempPath, true);
-		}
-
-		foreach (var subdir in dirs)
-		{
-			var tempPath = Path.Combine(gamePath, subdir.Name);
-			CopyGameFiles(tempPath.Replace("OuterWilds_Data", GetDataDirectoryName()), subdir.FullName);
-		}
 	}
 }
