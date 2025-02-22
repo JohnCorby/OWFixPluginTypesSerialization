@@ -8,9 +8,7 @@
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
     <NoWarn>MSB3270</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DebugType>none</DebugType>
+    <DebugType>portable</DebugType>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="OWML" Version="2.9.5" />
@@ -28,6 +26,6 @@
     <Content Include="OWFixPluginTypesSerialization.csproj.user" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../OWFixPluginTypesSerializationPatcher/OWFixPluginTypesSerializationPatcher.csproj" /> 
+    <ProjectReference Include="../OWFixPluginTypesSerializationPatcher/OWFixPluginTypesSerializationPatcher.csproj" />
   </ItemGroup>
 </Project>
