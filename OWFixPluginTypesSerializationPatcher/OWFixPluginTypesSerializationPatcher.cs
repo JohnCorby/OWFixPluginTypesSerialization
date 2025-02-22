@@ -37,7 +37,8 @@ public static class OWFixPluginTypesSerializationPatcher
 		var managedPath = Path.Combine(gamePath, GetDataPath(gamePath), "Managed");
 
 		// delete all the existing bep stuff just in case user still has old version
-		Directory.Delete(Path.Combine(gamePath, "BepInEx"), true);
+		if (Directory.Exists(Path.Combine(gamePath, "BepInEx")))
+			Directory.Delete(Path.Combine(gamePath, "BepInEx"), true);
 		File.Delete(Path.Combine(gamePath, "doorstop_config.ini"));
 		File.Delete(Path.Combine(gamePath, "winhttp.dll"));
 		Console.WriteLine("deleted all bep stuff in game path");
