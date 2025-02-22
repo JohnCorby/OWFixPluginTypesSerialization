@@ -12,9 +12,15 @@ public static class Patcher
 		var gamePath = AppDomain.CurrentDomain.BaseDirectory;
 		var managedPath = Path.Combine(gamePath, GetDataPath(gamePath), "Managed");
 
+		// TODO: delete all the existing bep stuff just in case user still has old version
+
+		// have to delete this owml dll so as to not conflict with a bepinex one of the same name
 		File.Delete(Path.Combine(managedPath, "MonoMod.Utils.dll"));
 
+		// copy over the right bep stuff to the game folder
 		CopyGameFiles(gamePath, Path.Combine(basePath, "ToCopy"));
+
+		// TODO: edit the config to point to the right file in our mod folder
 	}
 
 	private static string GetExecutableName(string gamePath)
@@ -57,7 +63,7 @@ public static class Patcher
 
 		var dirs = dir.GetDirectories();
 
-		// If the destination directory doesn't exist, create it.       
+		// If the destination directory doesn't exist, create it.
 		Directory.CreateDirectory(gamePath);
 
 		// Get the files in the directory and copy them to the new location.

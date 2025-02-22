@@ -8,15 +8,8 @@ public class OWFixPluginTypesSerialization : ModBehaviour
 {
 	private void Start()
 	{
-		// verify bepinex exists
+		// sanity check: verify bepinex exists
 		if (!File.Exists(Path.Combine(ModHelper.OwmlConfig.GamePath, "doorstop_config.ini")))
-			ModHelper.Console.WriteLine("BepInEx is not installed. Please run the game via the mod manager.", MessageType.Fatal);
-	}
-
-	private void OnApplicationQuit()
-	{
-		// uninstall bepinex by deleting one of the three files and copying back owml monomod
-		File.Delete(Path.Combine(ModHelper.OwmlConfig.GamePath, "doorstop_config.ini"));
-		File.Copy(Path.Combine(ModHelper.OwmlConfig.OWMLPath, "MonoMod.Utils.dll"), Path.Combine(ModHelper.OwmlConfig.ManagedPath, "MonoMod.Utils.dll"));
+			ModHelper.Console.WriteLine("OWFixPluginTypesSerialization: BepInEx is not installed. Please run the game via the RUN GAME button in Outer Wilds Mod Manager.", MessageType.Fatal);
 	}
 }
